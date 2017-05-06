@@ -16,11 +16,18 @@ import os
 import re
 import time
 
-cpu_num = 44
+cpu_num = 0
 cstate_num = 5
 cstate_enabled= 2
 
-def disable_cstate():
+def get_cpu_num():
+	cmd = "nproc"
+	result = os.popen(cmd)
+	num = result.read().strip()
+	num = int(num)
+	return num
+
+def disable_cstate(cpu_num):
 	for i in range(0, cpu_num):
 		for n in range(0, cstate_num):
 			if (n != cstate_enabled):
@@ -39,4 +46,8 @@ def disable_cstate():
 # main()
 ##############################################
 if   __name__  ==  "__main__":
-	disable_cstate()
+	cpu_num = get_cpu_num()
+	if (cpu_num == 0):
+		print("error cpu number\n")
+		exit(0)
+	disable_cstate(cpu_num)
