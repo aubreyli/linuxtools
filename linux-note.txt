@@ -1,0 +1,15 @@
+1. build linux kernel
+1) apt-get update
+2) apt-get install kernel-package libncurses5-dev fakeroot wget bzip2 build-essential
+3) make-kpkg clean
+4) fakeroot make-kpkg --jobs `nproc` --initrd kernel_image
+   or
+   fakeroot make-kpkg --jobs `nproc` --initrd --append-to-version=-custom kernel_image kernel_headers
+
+2. submit LKP job
+1) aubrey@inn:~$ lkp queue -b aubrey-fast_idle/4.8.x -k 59d15ffe62d16350cf800f10a4d4a86cd3cd7b71 -t lkp-bdw-ep2 netperf.yaml -r 3 -q vip -e aubrey.li@intel.com
+2) aubrey@inn:~$ lkp wtmp lkp-bdw-ep2 
+
+3. netperf
+1) netserver
+2) netperf -H 127.0.0.1 -l 60 -t TCP_RR
