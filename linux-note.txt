@@ -24,3 +24,6 @@
 3) echo 'r:aubrey_probe intel_idle $retval' > /sys/kernel/debug/tracing/kprobe_events
 4) trace-cmd record -T -e aubrey_probe
 5) trace-cmd report
+
+6. add user
+   useradd --create-home --user-group --shell /bin/bash <username>
