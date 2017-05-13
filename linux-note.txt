@@ -27,3 +27,11 @@
 
 6. add user
    useradd --create-home --user-group --shell /bin/bash <username>
+
+7. process affinity
+1) set affinity when the process is runing:
+   taskset -cp 0-21 `pgrep netserver`
+2) set affinity when the process is invoked:
+   taskset -c 22-43 netserver
+3) check which CPU the process is assigned to:
+   ps -mo pid,tid,%cpu,psr -p `pgrep netserver`
