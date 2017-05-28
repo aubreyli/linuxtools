@@ -35,3 +35,6 @@
    taskset -c 22-43 netserver
 3) check which CPU the process is assigned to:
    ps -mo pid,tid,%cpu,psr -p `pgrep netserver`
+
+8. unzip xz
+   xz -d dmesg.xz
