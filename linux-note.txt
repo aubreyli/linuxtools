@@ -42,3 +42,7 @@
 9. perf with intel_pt
 1) perf-with-kcore record pt_tmp -C0 -e intel_pt/cyc/k --filter="filter tick_nohz_idle_enter / tick_nohz_idle_exit" -- sleep 2
 2) perf-with-kcore script pt_tmp --itrace=cre --ns -Fcomm,pid,tid,cpu,time,ip,sym,symoff,dso,addr,flags,callindent
+
+10. submit patch
+1) git format-patch -2 -v1 --subject-prefix="RFC PATCH" --cover-letter
+2) git send-email --to len.brown@intel.com --to rafael.j.wysocki@intel.com --to arjan@linux.intel.com --cc linux-power-mgmt@eclists.intel.com --cc linux-power-mgmt@linux.intel.com *.patch
