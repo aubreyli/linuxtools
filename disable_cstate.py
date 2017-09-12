@@ -17,7 +17,7 @@ import re
 import time
 
 cpu_num = 0
-cstate_num = 5
+cstate_num = 4
 cstate_enabled= 2
 
 def get_cpu_num():
