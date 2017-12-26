@@ -45,7 +45,7 @@
 
 10. submit patch
 1) git format-patch -2 -v1 --subject-prefix="RFC PATCH" --cover-letter
-2) git send-email --to len.brown@intel.com --to rafael.j.wysocki@intel.com --to arjan@linux.intel.com --cc linux-power-mgmt@eclists.intel.com --cc linux-power-mgmt@linux.intel.com *.patch
+2) git send-email --to tglx@linutronix.de --to peterz@infradead.org --to len.brown@intel.com --to rjw@rjwysocki.net --to ak@linux.intel.com --to tim.c.chen@linux.intel.com --to arjan@linux.intel.com --to paulmck@linux.vnet.ibm.com --to yang.zhang.wz@gmail.com --cc x86@kernel.org --cc linux-kernel@vger.kernel.org *.patch
 
 11. screen tips
 C-a ?	显示所有键绑定信息
@@ -59,3 +59,9 @@ C-a a	发送 C-a到当前窗口
 C-a d	暂时断开screen会话
 C-a k	杀掉当前窗口
 C-a [	进入拷贝/回滚模式
+
+12. setup simics networking
+1) sudo apt-get install uml-utilities bridge-utils
+2) sudo tunctl -u `whoami` -t sim_tap0
+3) sudo ifconfig sim_tap0 192.168.1.10
+4) simics console running> connect-real-network-host interface = sim_tap0
