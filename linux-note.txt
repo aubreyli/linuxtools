@@ -65,3 +65,6 @@ C-a [	进入拷贝/回滚模式
 2) sudo tunctl -u `whoami` -t sim_tap0
 3) sudo ifconfig sim_tap0 192.168.1.10
 4) simics console running> connect-real-network-host interface = sim_tap0
+
+13. Linux kernel contributor list
+1) git log v3.0..v4.15 | grep Author | cut -d ":" -f 2 | sort | uniq -c | sort -nr | head -n 500
