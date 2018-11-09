@@ -68,3 +68,7 @@ C-a [	进入拷贝/回滚模式
 
 13. Linux kernel contributor list
 1) git log v3.0..v4.15 | grep Author | cut -d ":" -f 2 | sort | uniq -c | sort -nr | head -n 500
+
+14. ubuntu vnc
+1) ubuntu-gnome-desktop
+2) gnome-applets
