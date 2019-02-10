@@ -9,6 +9,7 @@
 2. submit LKP job
 1) aubrey@inn:~$ lkp queue -b aubrey-fast_idle/4.8.x -k 59d15ffe62d16350cf800f10a4d4a86cd3cd7b71 -t lkp-bdw-ep2 netperf.yaml -r 3 -q vip -e aubrey.li@intel.com
 2) aubrey@inn:~$ lkp wtmp lkp-bdw-ep2 
+3) aubrey@inn:~$ kbuild-queue -b aubrey-fast_idle/avx_v9 -k d52843ee72fe3e7d2114c1c83b84d90ada6c2591 -w
 
 3. netperf
 1) netserver
