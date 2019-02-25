@@ -9,7 +9,9 @@
 2. submit LKP job
 1) aubrey@inn:~$ lkp queue -b aubrey-fast_idle/4.8.x -k 59d15ffe62d16350cf800f10a4d4a86cd3cd7b71 -t lkp-bdw-ep2 netperf.yaml -r 3 -q vip -e aubrey.li@intel.com
 2) aubrey@inn:~$ lkp wtmp lkp-bdw-ep2 
-3) aubrey@inn:~$ kbuild-queue -b aubrey-fast_idle/avx_v9 -k d52843ee72fe3e7d2114c1c83b84d90ada6c2591 -w
+3) aubrey@inn:~$ kbuild-queue -b aubrey-fast_idle/avx_v9 -k d52843ee72fe3e7d2114c1c83b84d90ada6c2591 -w -c config
+4) $lkp ncompare -k -a d34a27ce2f54bfa985373d40efb28e48c8a07a3f 6d616e5e762c00b9d7f4b160028922bcf12236cc
+5) $lkp compare -at d34a27ce2f54bfa985373d40efb28e48c8a07a3f 6d616e5e762c00b9d7f4b160028922bcf12236cc -g schbench -g performance-100%-ucode=0x200004d
 
 3. netperf
 1) netserver
@@ -73,3 +75,8 @@ C-a [	进入拷贝/回滚模式
 14. ubuntu vnc
 1) ubuntu-gnome-desktop
 2) gnome-applets
+
+15. git lkp
+1) $ git fetch ssh://aubrey-skl/home/aubrey/work/linux-tip core_scheduling:core_scheduling
+2) $ git checkout core_scheduling
+3) $ git push -u origin core_scheduling
