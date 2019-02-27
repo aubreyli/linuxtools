@@ -12,6 +12,11 @@
 3) aubrey@inn:~$ kbuild-queue -b aubrey-fast_idle/avx_v9 -k d52843ee72fe3e7d2114c1c83b84d90ada6c2591 -w -c config
 4) $lkp ncompare -k -a d34a27ce2f54bfa985373d40efb28e48c8a07a3f 6d616e5e762c00b9d7f4b160028922bcf12236cc
 5) $lkp compare -at d34a27ce2f54bfa985373d40efb28e48c8a07a3f 6d616e5e762c00b9d7f4b160028922bcf12236cc -g schbench -g performance-100%-ucode=0x200004d
+6) $lkp power_reboot lkp-skl-2sp5
+7) $lkp serial lkp-skl-2sp5
+8) $ssh lkp-skl-2sp5, root, asdf
+9) list queued job: $ lkp lq lkp-skl-2sp5
+10) list tbox: $ ls /lkp/wtmp/lkp-*
 
 3. netperf
 1) netserver
