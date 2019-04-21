@@ -85,6 +85,7 @@ C-a [	进入拷贝/回滚模式
 1) $ git fetch ssh://aubrey-skl/home/aubrey/work/linux-tip core_scheduling:core_scheduling
 2) $ git checkout core_scheduling
 3) $ git push -u origin core_scheduling
+4) $ git push origin :branch-name (delete remote branch)
 
 16. perf profiling
 1) perf record -a -g -- sleep 10
