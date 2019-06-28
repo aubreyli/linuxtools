@@ -93,3 +93,6 @@ C-a [	进入拷贝/回滚模式
 
 17. ssh via socks proxy
 ssh -o ProxyCommand='nc -x proxy-prc.intel.com:1080 %h %p' aubrey@45.32.228.76
+
+18. perf package
+apt install libdw-dev libgtk2.0-dev libslang2-dev systemtap-sdt-dev libunwind-dev libperl-dev python-dev libnuma-dev libbabeltrace-dev binutils-dev libiberty-dev libaudit-dev default-jre openjdk-11-jdk
