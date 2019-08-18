@@ -96,3 +96,6 @@ ssh -o ProxyCommand='nc -x proxy-prc.intel.com:1080 %h %p' aubrey@45.32.228.76
 
 18. perf package
 apt install libdw-dev libgtk2.0-dev libslang2-dev systemtap-sdt-dev libunwind-dev libperl-dev python-dev libnuma-dev libbabeltrace-dev binutils-dev libiberty-dev libaudit-dev default-jre openjdk-11-jdk asciidoc
+
+19. cpu online/offline
+echo 0 | sudo tee /sys/devices/system/cpu/cpu53/online
