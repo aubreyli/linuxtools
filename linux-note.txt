@@ -90,3 +90,10 @@ apt install libdw-dev libgtk2.0-dev libslang2-dev systemtap-sdt-dev libunwind-de
 
 19. cpu online/offline
 echo 0 | sudo tee /sys/devices/system/cpu/cpu53/online
+echo off | sudo tee /sys/devices/system/cpu/smt/control
+
+20. git intel-next
+git push origin HEAD
+git push origin HEAD --force
+git log origin/branch_name
+
