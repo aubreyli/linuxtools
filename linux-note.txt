@@ -57,7 +57,9 @@
 
 11. tmux tips
 C-b "	上下分屏
-C-a %	左右分屏
+C-b %	左右分屏
+C-b d   detach
+tmux attach-session -t my_session
 
 12. setup simics networking
 1) sudo apt-get install uml-utilities bridge-utils
