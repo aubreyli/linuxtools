@@ -83,7 +83,8 @@ tmux attach-session -t my_session
 
 16. perf profiling
 1) perf record -a -g -- sleep 10
-2) perf report -g --no-children
+2) perf record --all-kernel
+3) perf report -g --no-children
 
 17. ssh via socks proxy
 ssh -o ProxyCommand='nc -x proxy-prc.intel.com:1080 %h %p' aubrey@45.32.228.76
