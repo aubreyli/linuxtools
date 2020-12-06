@@ -23,6 +23,9 @@
 12)check job queue:
 ls /lkp/jobs/queued/int/lkp-cfl-d1
 ls /lkp/jobs/queued/vip/lkp-cfl-e1/
+13) my repo:
+- ssh bee; cd /git/aubrey/fast_idle.git;
+- ssh inn; cd /c/repo/linux; git branch -a | grep aubrey
 
 3. netperf
 1) netserver
