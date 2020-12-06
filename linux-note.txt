@@ -16,7 +16,9 @@
 7) $lkp serial lkp-skl-2sp5
 8) $ssh lkp-skl-2sp5, root, asdf
 9) list queued job: $ lkp lq lkp-skl-2sp5
-10)list tbox: $ ls /lkp/wtmp/lkp-*
+10)list tbox:
+- $ ls /lkp/wtmp/lkp-*
+- $ ls /lkp/lkp/src/hosts
 11)lkp queue -t lkp-cfl-d1 -b internal-aubrey-fast_idle/idle-cpumask-v5 -q vip borrow-1d-1d.yaml
 12)check job queue:
 ls /lkp/jobs/queued/int/lkp-cfl-d1
