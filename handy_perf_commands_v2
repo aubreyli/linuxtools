@@ -1,0 +1,84 @@
+#Handy process status checks:
+#check the status on the hung process
+ps -L -p <pid>  -o pid,tid,psr,cmd,stat,wchan,thcount,%cpu
+#ps --forest  -p <pid> -o pid,tid,psr,cmd,stat,wchan,thcount,%cpu
+#ps ft`tty` -o pid,tid,psr,cmd,stat,wchan,thcount,%cpu
+
+#Get the scheduling information on the hung process  
+cat /proc/<pid>/sched , then repeat after a few seconds to see changes in vruntime
+
+
+#Handy perf scripts:
+
+#Get scheduling events and timer events on CPU 1
+perf trace  --cpu 1 -e sched:*,timer:* -- sleep <trace_duration>  &> trace  
+
+#Get scheduling events and timer events for PID on CPU 1
+perf trace -p <pid> --cpu 1 -e sched:*,timer:* -- sleep <trace_duration>  &> trace  
+
+#Get scheduling information on hung process
+ps --forest  -p <pid> -o pid,cmd,stat,wchan,thcount,%cpu
+cat /proc/<pid>/sched
+
+#Put probe into scheduling tick function
+perf probe task_tick_fair
+
+#
+# During the migration of a scheduling entity the vruntime of the sched entity's
+# vruntime is updated as follow:
+#
+#						<-- probe with dequeue_entity
+# Dequeue
+# 	se->vruntime -= old_cfs_rq->min_vruntime
+# 						<-- probe with update_cfs_group
+# Enqueue
+# 	se->vruntime += new_cfs_rq->min_vruntime 
+# 						<-- probe with __enqueue_entity
+#
+# Probe the migration of a task to bad CPU, starting first with dequeue operation.
+# The dequeue_entity probe will show the sched entity's vruntime before dequeue starts.
+# The sched entity's vruntime after dequeue will be shown in update_cfs_group probe,
+# right after dequeue operation is done.
+#
+# If we see a huge value of se->vruntime here in update_cfs_group probe, 
+# we could be in trouble as this will mean a huge delay to execution after migrating
+# to new runqueue.
+#
+perf probe 'dequeue_entity cfs_rq cfs_rq->min_vruntime cfs_rq->nr_running se se->vruntime se->parent se->on_rq se->exec_start se->sum_exec_runtime'
+perf probe 'update_cfs_group se se->vruntime se->parent se->on_rq se->exec_start se->sum_exec_runtime'
+# Check the vruntime of the sched entity that's moved, after it has enqueued on
+# the new cfs_rq
+perf probe '__enqueue_entity cfs_rq cfs_rq->min_vruntime cfs_rq->nr_running se se->vruntime se->parent se->on_rq se->exec_start se->sum_exec_runtime'
+#
+# Now check what happens during the regular tick on the bad cpu, and look into
+# the current running sched entity's vruntime to be checked against the
+# migrated sched entity 
+#
+perf probe 'task_tick_fair rq->nr_running'
+perf probe 'entity_tick'
+perf probe 'update_curr cfs_rq cfs_rq->min_vruntime cfs_rq->nr_running'
+#
+# update_cfs_group is called from both dequeue_entity and entity_tick
+# peek into vruntime of the dequeued sched entity in dequeue path that has the se->vruntime subtracted
+# by the value of the old queue's min_vruntime
+#
+perf probe 'update_cfs_group se se->vruntime se->parent se->on_rq se->exec_start se->sum_exec_runtime'
+perf probe 'check_preempt_tick'
+perf probe 'pick_next_task_fair'
+# Now put all the probes together to trace the stuck CPU and the good CPU we are migrating from
+perf trace -e probe:dequeue_entity -e probe:update_cfs_group --cpu <good_cpu_task_migrates_from> sleep 20 &> trace_good_cpu 
+perf trace -e probe:__enqueue_entity -e probe:update_cfs_group -e probe:task_tick_fair -e probe:entity_tick -e probe:update_curr -e probe:check_preempt_tick -e probe:pick_next_task_fair --cpu 1 sleep 20 &> trace_bad_cpu
+taskset -cp 1  <pid of task to migrate>
+
+#Get vmlinux with debug symbols for Ubuntu
+#usually the vmlinux locates in /usr/lib/debug/ after installation
+sudo apt-get linux-image.*-dbg
+or
+sudo apt-get install linux-image-$(uname -r)-dbgsym
+
+#sched debug
+echo 1 > sys/kernel/debug/sched_debug
+cat /proc/sched_debug
+
+#snoop runqueue length with BPF
+runqlen.bt   (http://manpages.ubuntu.com/manpages/focal/man8/runqlen.bt.8.html)
