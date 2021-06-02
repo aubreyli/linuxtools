@@ -109,3 +109,7 @@ echo off | sudo tee /sys/devices/system/cpu/smt/control
 git push origin HEAD
 git push origin HEAD --force
 git log origin/branch_name
+
+21. perf branch profiling
+sudo perf record -b -a -g sleep 2
+sudo perf report --samples 10
