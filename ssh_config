@@ -1,0 +1,37 @@
+Host aubrey-* osve-* 10.240.*
+        IdentityFile    ~/.ssh/id_rsa.internal
+
+Host inn
+	User aubrey
+	Hostname bee.sh.intel.com
+	Port 22000
+	IdentityFile    ~/.ssh/id_rsa.internal
+Host bee 
+	User aubrey
+	Hostname bee.sh.intel.com
+	IdentityFile    ~/.ssh/id_rsa.internal
+
+Host 172.105.201.220 lidms.top
+	User aubrey
+	Port 6966
+        IdentityFile    ~/.ssh/id_rsa
+
+Host github.com
+	User aubreyli
+	IdentityFile	~/.ssh/id_rsa
+	ProxyCommand	nc -x child-prc.intel.com:1080 %h %p
+
+Host 10.54.64.8
+	User aubrey
+	Port 49357
+        IdentityFile    ~/.ssh/id_rsa
+
+Host gitlab.devtools.intel.com
+	User cli6
+	IdentityFile    ~/.ssh/id_rsa.internal
+
+Host codeup.openanolis.cn
+	User git
+        IdentityFile    ~/.ssh/id_rsa
+	ProxyCommand	nc -x child-prc.intel.com:1080 %h %p
+	
