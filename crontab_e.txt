@@ -1,0 +1,5 @@
+# m h  dom mon dow   command
+30 2 * * * /home/aubrey/linuxtools/stable-pull.sh
+30 3 * * * /home/aubrey/linuxtools/linux-pull.sh
+30 4 * * * /home/aubrey/linuxtools/anolis-sync.sh
+30 5 * * * /home/aubrey/linuxtools/internal-sync.sh
