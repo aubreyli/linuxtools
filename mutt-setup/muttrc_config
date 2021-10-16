@@ -1,0 +1,5 @@
+set sendmail="/usr/bin/msmtp"
+set use_from=yes
+set realname="Aubrey Li"
+set from="aubrey@sh-out.intel.com"
+set envelope_from=yes
