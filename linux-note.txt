@@ -97,6 +97,7 @@ tmux attach-session -t my_session
 
 17. ssh via socks proxy
 ssh -o ProxyCommand='nc -x proxy-prc.intel.com:1080 %h %p' aubrey@45.32.228.76
+ssh -o ProxyCommand="connect-proxy -S child-prc.intel.com:1080 %h %p" root@8.140.143.216
 
 18. perf package
 apt install libdw-dev libgtk2.0-dev libslang2-dev systemtap-sdt-dev libunwind-dev libperl-dev python-dev libnuma-dev libbabeltrace-dev binutils-dev libiberty-dev libaudit-dev default-jre openjdk-11-jdk asciidoc
