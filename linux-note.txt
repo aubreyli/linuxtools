@@ -111,6 +111,7 @@ git push origin HEAD
 git push origin HEAD --force
 git log origin/branch_name
 git fetch ../linux-stable refs/tags/v5.10.60:refs/tags/v5.10.60 --no-tags
+git push origin v5.10.60
 
 21. perf branch profiling
 sudo perf record -b -a -g sleep 2
