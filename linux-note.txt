@@ -116,3 +116,6 @@ git push origin v5.10.60
 21. perf branch profiling
 sudo perf record -b -a -g sleep 2
 sudo perf report --samples 10
+
+22. gitlab management
+git fetch origin merge-requests/REQUESTID/head:BRANCHNAME && git checkout BRANCHNAME
