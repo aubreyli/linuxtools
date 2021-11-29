@@ -14,6 +14,8 @@ debug = 1
 
 curr_dir = os.getcwd()
 patch_dir = os.path.join(curr_dir, "backport")
+upstream_dir = os.path.join(curr_dir, "upstream")
+linux_dir = '/home/aubrey/work/linux'
 
 def format_upstream(ele, commit_id):
     if 'commit' in ele:
@@ -48,11 +50,12 @@ def obtain_commit_id(patch):
     pf.close()
     return commit_id
 
-def obtain_patch(patch):
-    pf = open(patch_file,'r')
-    for line in pf.readlines():
-        ele = line.strip().split()
-    pf.close()
+def obtain_patch(commit_id):
+    cmd = "git format-patch -1 " + commit_id
+    os.system(cmd)
+    cmd = "mv *.patch " + upstream_dir + "/" + patch
+    print(cmd)
+    os.system(cmd)
 
 if __name__ == "__main__":
 
@@ -64,5 +67,5 @@ if __name__ == "__main__":
         patch_file = os.path.join(patch_dir, patch)
 	commit_id = obtain_commit_id(patch_file)
 	print(commit_id)
-	obtain_patch(patch_file)
-
+	os.chdir(linux_dir)
+	obtain_patch(commit_id)
