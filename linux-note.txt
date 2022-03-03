@@ -119,3 +119,12 @@ sudo perf report --samples 10
 
 22. gitlab management
 git fetch origin merge-requests/REQUESTID/head:BRANCHNAME && git checkout BRANCHNAME
+
+23. batch add acked-by for anolis
+
+If you need to add Acked-by lines to, say, the last 10 commits (none of which is a merge), use this command:
+
+git filter-branch --msg-filter '
+	cat &&
+	echo "Acked-by: Bugs Bunny <bunny@bugzilla.org>"
+' HEAD~10..HEAD
