@@ -128,3 +128,6 @@ git filter-branch --msg-filter '
 	cat &&
 	echo "Acked-by: Bugs Bunny <bunny@bugzilla.org>"
 ' HEAD~10..HEAD
+
+24 pull request
+https://gitee.com/anolis/cloud-kernel/pull/new/anolis:intel-tdx-part2-core-mem...anolis:linux-next?source_repo=20938569
