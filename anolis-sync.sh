@@ -9,14 +9,14 @@ git checkout devel-5.10
 echo "Cloud-kernel devel-5.10 branch result:" > $LOGFILE 2>&1
 echo "======================================" >>  $LOGFILE 2>&1
 git pull >> $LOGFILE 2>&1
-echo -e "\n" >>  $LOGFILE 2>&1
+echo "\n" >>  $LOGFILE 2>&1
 
 git checkout linux-next
 #git reset --hard 528cecfa5af09631f0589efe9eacbd543c8c9db1 #v5.16.10
 echo "Cloud-kernel linux-next branch result:" >> $LOGFILE 2>&1
 echo "======================================" >> $LOGFILE 2>&1
 git pull >> $LOGFILE 2>&1
-echo -e "\n" >>  $LOGFILE 2>&1
+echo "\n" >>  $LOGFILE 2>&1
 
 cd /home/aubrey/anolis/intel-cloud-kernel
 #sync up intel-kernel master branch with linux-stable master branch
@@ -25,14 +25,14 @@ echo "Intel-cloud-kernel devel-5.10 branch result:" >> $LOGFILE 2>&1
 echo "============================================" >> $LOGFILE 2>&1
 git pull upstream devel-5.10 >> $LOGFILE 2>&1
 git push >> $LOGFILE 2>&1
-echo -e "\n" >>  $LOGFILE 2>&1
+echo "\n" >>  $LOGFILE 2>&1
 
 git checkout linux-next
 echo "Intel-cloud-kernel devel-5.10 branch result:" >> $LOGFILE 2>&1
 echo "============================================" >> $LOGFILE 2>&1
 git pull upstream linux-next >> $LOGFILE 2>&1
 git push >> $LOGFILE 2>&1
-echo -e "\n" >>  $LOGFILE 2>&1
+echo "\n" >>  $LOGFILE 2>&1
 
 cat $LOGFILE | mutt -s "[anolis]: $TODAY update" $EMAIL
 rm $LOGFILE
