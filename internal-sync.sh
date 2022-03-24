@@ -26,5 +26,12 @@ git pull /home/aubrey/anolis/cloud-kernel linux-next >> $LOGFILE 2>&1
 git push >> $LOGFILE 2>&1
 echo "\n" >>  $LOGFILE 2>&1
 
+git checkout intel-devel-5.10
+echo "intel-kernel intel-devel-5.10 branch result:" >> $LOGFILE 2>&1
+echo "=========================================" >>  $LOGFILE 2>&1
+git rebase anck-devel-5.10 >> $LOGFILE 2>&1
+git push >> $LOGFILE 2>&1
+echo "\n" >>  $LOGFILE 2>&1
+
 cat $LOGFILE | mutt -s "[Intel-kernel]: $TODAY update" $EMAIL
 rm $LOGFILE
