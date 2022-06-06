@@ -17,6 +17,7 @@ echo "Cloud-kernel linux-next branch result:" >> $LOGFILE 2>&1
 echo "======================================" >> $LOGFILE 2>&1
 git pull >> $LOGFILE 2>&1
 echo "\n" >>  $LOGFILE 2>&1
+git checkout devel-5.10
 
 cd /home/aubrey/anolis/intel-cloud-kernel
 #sync up intel-kernel master branch with linux-stable master branch
@@ -33,6 +34,7 @@ echo "============================================" >> $LOGFILE 2>&1
 git pull upstream linux-next >> $LOGFILE 2>&1
 git push >> $LOGFILE 2>&1
 echo "\n" >>  $LOGFILE 2>&1
+git checkout devel-5.10
 
 cat $LOGFILE | mutt -s "[anolis]: $TODAY update" $EMAIL
 rm $LOGFILE

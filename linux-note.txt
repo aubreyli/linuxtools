@@ -5,6 +5,7 @@
 4) fakeroot make-kpkg --jobs `nproc` --initrd kernel_image
    or
    fakeroot make-kpkg --jobs `nproc` --initrd --append-to-version=-custom kernel_image kernel_headers
+   sudo make deb-pkg LOCALVERSION=-custom KDEB_PKGVERSION=$(make kernelversion)-1
 
 2. submit LKP job
 1) aubrey@inn:~$ lkp queue -b aubrey-fast_idle/4.8.x -k 59d15ffe62d16350cf800f10a4d4a86cd3cd7b71 -t lkp-bdw-ep2 netperf.yaml -r 3 -q vip -e aubrey.li@intel.com
@@ -126,8 +127,14 @@ If you need to add Acked-by lines to, say, the last 10 commits (none of which is
 
 git filter-branch --msg-filter '
 	cat &&
-	echo "Acked-by: Bugs Bunny <bunny@bugzilla.org>"
+	echo "Reviewed-by: Artie Ding <artie.ding@linux.alibaba.com>"
 ' HEAD~10..HEAD
 
 24 pull request
-https://gitee.com/anolis/cloud-kernel/pull/new/anolis:intel-tdx-part2-core-mem...anolis:linux-next?source_repo=20938569
+https://gitee.com/anolis/cloud-kernel/pull/new/anolis:intel-siov-ANBZ...anolis:devel-5.10?source_repo=20938569
+
+25 git commit and author date
+git formatpatch -1 --pretty=fuller
+
+26 check network port
+netstat -tpln | grep 590
