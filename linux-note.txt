@@ -133,8 +133,9 @@ git filter-branch --msg-filter '
 24 pull request
 https://gitee.com/anolis/cloud-kernel/pull/new/anolis:intel-siov-ANBZ...anolis:devel-5.10?source_repo=20938569
 
-25 git commit and author date
+25 git commit and author date and merged tag
 git formatpatch -1 --pretty=fuller
+git tag --contains 9f8c7baedabc9693fbd7890f8fda40578bde4f73
 
 26 check network port
 netstat -tpln | grep 590
