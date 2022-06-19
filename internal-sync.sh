@@ -7,14 +7,14 @@ cd /home/aubrey/work/os.linux.server.openanolis-kernel/
 git checkout devel-5.10
 echo "intel-kernel devel-5.10 branch result:" >> $LOGFILE 2>&1
 echo "=========================================" >>  $LOGFILE 2>&1
-git pull /home/aubrey/anolis/cloud-kernel devel-5.10 >> $LOGFILE 2>&1
+git pull /home/aubrey/anolis/intel-cloud-kernel devel-5.10 >> $LOGFILE 2>&1
 git push >> $LOGFILE 2>&1
 echo "\n" >>  $LOGFILE 2>&1
 
-git checkout devel-5.10
+git checkout siov-5.10
 echo "intel-kernel siov-5.10 branch result:" >> $LOGFILE 2>&1
 echo "=========================================" >>  $LOGFILE 2>&1
-git pull /home/aubrey/anolis/cloud-kernel siov-5.10 >> $LOGFILE 2>&1
+git pull /home/aubrey/anolis/intel-cloud-kernel siov-5.10 >> $LOGFILE 2>&1
 git push --force >> $LOGFILE 2>&1
 echo "\n" >>  $LOGFILE 2>&1
 
