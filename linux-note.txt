@@ -139,3 +139,20 @@ git tag --contains 9f8c7baedabc9693fbd7890f8fda40578bde4f73
 
 26 check network port
 netstat -tpln | grep 590
+
+27 check disk rd/wr speed
+1) write:
+   time dd if=/dev/zero of=/tmp/test bs=8k count=100000
+2) read:
+   time dd if=/tmp/test of=/dev/null bs=8k
+3) read/write:
+   time dd if=/tmp/test of=/var/test bs=64k
+
+28 cross compile
+cd $KERNEL_SOURCE
+make ARCH=$KERNEL_ARCH O=$KERNEL_BUILD $KERNEL_CONF
+
+cd $KERNEL_BUILD
+make ARCH=$KERNEL_ARCH CROSS_COMPILE=$TARGET- V=1 vmlinux modules
+
+make -j120 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-
