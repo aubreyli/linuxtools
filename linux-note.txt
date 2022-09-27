@@ -156,3 +156,6 @@ cd $KERNEL_BUILD
 make ARCH=$KERNEL_ARCH CROSS_COMPILE=$TARGET- V=1 vmlinux modules
 
 make -j120 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-
+
+29 find file containing string and move it
+find . -type f -exec grep -lr "Intel-SIG" {} \; -exec mv {} ./tmp/ \;
