@@ -1,0 +1,90 @@
+  remotes/origin/intel/amx/ANBZ173/part1/93		#2021 Q4
+  remotes/origin/intel/amx/ANBZ173/part2/91		#2021 Q4
+  remotes/origin/intel/isst/ANBZ210/2			#2021 Q4
+  remotes/origin/intel/pmt/ANBZ24/15			#2021 Q4
+  remotes/origin/intel/mce/ANBZ21/4			#2021 Q4
+  remotes/origin/intel/dsa/ANBZ22/85			#2021 Q4
+
+----------------------------------------------------------------
+
+  remotes/origin/ali/amx/guest/ANBZ475/29		#2022 Q1
+  remotes/origin/ali/tdx/host/ANBZ1215/12		#2022 Q1
+  remotes/origin/intel/idle/ANBZ841/11			#2022 Q1
+  remotes/origin/intel/mce/ANBZ443/4			#2022 Q1
+  remotes/origin/intel/dsa/ANBZ857/54			#2022 Q1
+
+----------------------------------------------------------------
+
+  # siov p0
+  remotes/origin/intel/siov/vfio/ANBZ836/1		#2022 Q2
+  remotes/origin/intel/siov/slad/ANBZ879/19		#2022 Q2
+  remotes/origin/intel/siov/ims/ANBZ1068/31		#2022 Q2
+  remotes/origin/intel/siov/vdcm/ANBZ1087/part1/76	#2022 Q2
+  remotes/origin/intel/siov/vdcm/ANBZ1087/part2/12	#2022 Q2
+  remotes/origin/intel/kvm/emin/ANBZ1113/2		#2022 Q2
+  remotes/origin/intel/kvm/uapi/ANBZ1303/1		#2022 Q2
+  remotes/origin/intel/lm/dsa/ANBZ1339/1		#2022 Q2
+  remotes/origin/intel/lm/vfio/ANBZ1339/2		#2022 Q2
+
+  # dsa page copy
+  remotes/origin/intel/siov/pgmg/ANBZ1084/34		#2022 Q2
+  remotes/origin/ali/ucode/rollback/ANBZ1252/1		#2022 Q2
+
+  #power management
+  remotes/origin/intel/idle/ANBZ1432/2			#2022 Q2
+  remotes/origin/intel/hfi/ANBZ1433/11			#2022 Q2
+
+  #SGX
+  remotes/origin/intel/sgx/ANBZ1324/47			#2022 Q2
+  remotes/origin/intel/sgx/mca/ANBZ1345/7		#2022 Q2
+
+----------------------------------------------------------------
+
+  #siov p0 bug-fixes
+  remotes/origin/intel/siov/reboot/ANBZ1502/1		#2022 Q3
+  remotes/origin/intel/siov/prq/ANBZ1627/2		#2022 Q3
+  remotes/origin/intel/siov/rewq/ANBZ1646/3		#2022 Q3
+  remotes/origin/intel/siov/idvd/ANBZ1657/4		#2022 Q3
+  remotes/origin/intel/idxd/ANBZ1717/10			#2022 Q3
+
+  #siov p1
+  remotes/origin/ali/siov/ioasid/ANBZ1435/25		#2022 Q3
+  remotes/origin/intel/kvm/enqcmd/ANBZ1660/8		#2022 Q3
+  remotes/origin/intel/siov/vfio/ANBZ1673/2		#2022 Q3
+  remotes/origin/intel/siov/lm/ANBZ1810/1		#2022 Q3
+  remotes/origin/intel/siov/iommu/ANBZ1675/3		#2022 Q3
+  remotes/origin/intel/siov/pf/ANBZ1676/2		#2022 Q3
+  remotes/origin/intel/siov/mdev/ANBZ1704/24		#2022 Q3
+  remotes/origin/intel/siov/lm/ANBZ1747/3		#2022 Q3
+  remotes/origin/intel/siov/hp/ANBZ1829/1		#2022 Q3
+  remotes/origin/intel/iommu/iova/ANBZ1940/9		#2022 Q3
+  remotes/origin/intel/iommu/intel/ANBZ1946/18		#2022 Q3
+  remotes/origin/intel/iommu/github/10			#2022 Q3
+
+  #DSA page clear
+  remotes/origin/intel/dsa/ANBZ2100/16			#2022 Q3
+
+  #siov p1 bug-fixes
+  remotes/origin/intel/idxd/ANBZ2320/2			#2022 Q3
+  remotes/origin/intel/siov/dsa/ANBZ2268/1		#2022 Q3
+
+  #power management
+  remotes/origin/intel/idle/ANBZ2187/2			#2022 Q3
+  remotes/origin/intel/isst/ANBZ1550/5			#2022 Q3
+  remotes/origin/intel/isst-tool/ANBZ1811/21		#2022 Q3
+  remotes/origin/intel/amx-idle/ANBZ1941/3		#2022 Q3
+  remotes/origin/intel/powercap/rapl/ANBZ1513/1		#2022 Q3
+  remotes/origin/intel/uncore/freq/ANBZ2252/1		#2022 Q3
+
+  remotes/origin/intel/mce-hbm/ANBZ443/4		#2022 Q3
+  remotes/origin/intel/ntb/ANBZ1735/1			#2022 Q3
+  remotes/origin/intel/pmu/ANBZ2223/9			#2022 Q3
+  remotes/origin/intel/ifs/ANBZ1553/13			#2022 Q3
+  remotes/origin/intel/watchdog/ANBZ2224/2		#2022 Q3
+
+----------------------------------------------------------------
+
+  #siov p1 bug-fixes
+  remotes/origin/intel/siov/iommu/ANBZ2440/1		#2022 Q4
+  remotes/origin/intel/siov/iommu/ANBZ2367/2		#2022 Q4
+  remotes/origin/intel/sgx/edmm/ANBZ2347/57		#2022 Q4
