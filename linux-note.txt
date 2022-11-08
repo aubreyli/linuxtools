@@ -6,6 +6,8 @@
    or
    fakeroot make-kpkg --jobs `nproc` --initrd --append-to-version=-custom kernel_image kernel_headers
    sudo make deb-pkg LOCALVERSION=-custom KDEB_PKGVERSION=$(make kernelversion)-1
+   make -j `getconf _NPROCESSORS_ONLN` 
+   make deb-pkg LOCALVERSION=-custom
 
 2. submit LKP job
 1) aubrey@inn:~$ lkp queue -b aubrey-fast_idle/4.8.x -k 59d15ffe62d16350cf800f10a4d4a86cd3cd7b71 -t lkp-bdw-ep2 netperf.yaml -r 3 -q vip -e aubrey.li@intel.com
