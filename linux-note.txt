@@ -161,3 +161,6 @@ make -j120 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-
 
 29 find file containing string and move it
 find . -type f -exec grep -lr "Intel-SIG" {} \; -exec mv {} ./tmp/ \;
+
+30 turbostat usage
+sudo turbostat -c 56 --show Package,Core,CPU,Avg_MHz,Busy%,Bzy_MHz,TSC_MHz
