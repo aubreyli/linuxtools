@@ -164,3 +164,6 @@ find . -type f -exec grep -lr "Intel-SIG" {} \; -exec mv {} ./tmp/ \;
 
 30 turbostat usage
 sudo turbostat -c 56 --show Package,Core,CPU,Avg_MHz,Busy%,Bzy_MHz,TSC_MHz
+
+31 show topology
+lstopo --of ascii | less
