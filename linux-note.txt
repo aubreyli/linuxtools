@@ -167,3 +167,15 @@ sudo turbostat -c 56 --show Package,Core,CPU,Avg_MHz,Busy%,Bzy_MHz,TSC_MHz
 
 31 show topology
 lstopo --of ascii | less
+
+32 grubby usage
+(1) grubby --info=ALL | grep -E "^kernel|^index"
+(2) grubby --set-default="/boot/vmlinuz-4.18.0-193.1.2.el8_2.x86_64"
+(3) grubby --set-default-index=2
+(4) grubby --default-kernel
+(5) grubby --default-index
+(6) grubby --update-kernel=/boot/vmlinuz-$(uname -r) --args="ipv6.disable=1"
+(7) grubby --update-kernel=ALL --args="ipv6.disable=1"
+(8) grubby --update-kernel=/boot/vmlinuz-$(uname -r) --remove-args="ipv6.disable=1"
+(9) grubby --update-kernel=ALL --remove-args="ipv6.disable=1"
+(10) ls -l /boot/loader/entries/*
