@@ -179,3 +179,5 @@ lstopo --of ascii | less
 (8) grubby --update-kernel=/boot/vmlinuz-$(uname -r) --remove-args="ipv6.disable=1"
 (9) grubby --update-kernel=ALL --remove-args="ipv6.disable=1"
 (10) ls -l /boot/loader/entries/*
+(11) grubby --remove-kernel=menu_index
+(12) grubby --remove-kernel=old_kernel
