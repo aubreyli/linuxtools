@@ -181,3 +181,7 @@ lstopo --of ascii | less
 (10) ls -l /boot/loader/entries/*
 (11) grubby --remove-kernel=menu_index
 (12) grubby --remove-kernel=old_kernel
+
+33 set the date
+sudo hwclock --set --date="2023-04-26 10:30:00"
+sudo date --set="2023-04-26 10:30:00"
