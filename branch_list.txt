@@ -129,3 +129,6 @@
   remotes/origin/intel/emr/edac/ANBZ443/1		#2023 Q3
   remotes/origin/intel/siov/ANBZ6027/1			#2023 Q3
   remotes/origin/intel/tdguest/getquote/ANBZ6590/3	#2023 Q3
+
+----------------------------------------------------------------
+  remotes/origin/intel/siov/ANBZ6748/1			#2023 Q4
