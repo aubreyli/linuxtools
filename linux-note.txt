@@ -46,7 +46,8 @@ ls /lkp/jobs/queued/vip/lkp-cfl-e1/
 5) trace-cmd report
 
 6. add user
-   useradd --create-home --user-group --shell /bin/bash <username>
+   useradd --create-home -d /test/aubrey --user-group --shell /bin/bash aubrey
+   usermod -aG wheel aubrey
 
 7. process affinity
 1) set affinity when the process is runing:
