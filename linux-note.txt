@@ -189,3 +189,6 @@ sudo date --set="2023-04-26 10:30:00"
 
 34. fix qemu GTK initialization issue
 xhost si:localuser:root
+
+35. scp thru a jumper
+scp -J root@10.238.153.101 root@192.168.135.28:~/file.txt .
