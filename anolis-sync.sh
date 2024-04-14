@@ -12,7 +12,7 @@ git pull >> $LOGFILE 2>&1
 echo "\n" >>  $LOGFILE 2>&1
 
 git checkout devel-6.6
-#git reset --hard e2d133180bbc28a48316e67a003796885580b087 #v5.10.9
+#git reset --hard ffc253263a1375a65fa6c9f62a893e9767fbebfa #v6.6
 echo "Cloud-kernel devel-6.6 branch result:" > $LOGFILE 2>&1
 echo "======================================" >>  $LOGFILE 2>&1
 git pull >> $LOGFILE 2>&1
