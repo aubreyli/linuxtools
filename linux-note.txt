@@ -192,3 +192,7 @@ xhost si:localuser:root
 
 35. scp thru a jumper
 scp -J root@10.238.153.101 root@192.168.135.28:~/file.txt .
+
+36. GRUB2 enable debug message
+- set debug=all
+- grub-install --debug-image=all
