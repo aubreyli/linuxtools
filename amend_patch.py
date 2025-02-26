@@ -14,8 +14,10 @@ Description:
 
     - Move the patch files to a directory and run amend_patch.py script
         $python amend_patch.py -c anolis -p ./patches/0001-mm-pcp-avoid-to-drain-PCP-when-process-exit.patch
+
       Or
         $python amend_patch.py -c oc -p ./patches/0002-cacheinfo-calculate-size-of-per-CPU-data-cache-slice.patch
+
       Or
         $python amend_patch.py -c baseline -d ./patches
 
