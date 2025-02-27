@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 Subject: Amend upstream patch format for downstream community backport
 Author:  Aubrey Li
@@ -13,10 +14,14 @@ Description:
         0003-mm-pcp-reduce-lock-contention-for-draining-high-orde.patch
 
     - Move the patch files to a directory and run amend_patch.py script
+
         $python amend_patch.py -c anolis -p ./patches/0001-mm-pcp-avoid-to-drain-PCP-when-process-exit.patch
 
       Or
         $python amend_patch.py -c oc -p ./patches/0002-cacheinfo-calculate-size-of-per-CPU-data-cache-slice.patch
+
+      Or
+        $python amend_patch.py -c euler -p ./patches/0003-mm-pcp-reduce-lock-contention-for-draining-high-orde.patch
 
       Or
         $python amend_patch.py -c baseline -d ./patches
@@ -29,14 +34,31 @@ import sys
 import re
 import argparse
 
+########################################################
 # Anolis Specific definition
-anbz_str     = 'ANBZ: #16164'
+########################################################
+anbz_str      = 'ANBZ: #16164'
+
+########################################################
 # OpenCloudOS specific definition
-conflict_str = 'Conflict: none'
+########################################################
+conflict_str  = 'Conflict: none'
+
+########################################################
+# OpenEuler specific definition
+########################################################
+inclusion_str = 'mainline inclusion'
+from_str      = 'from mainline-v6.7-rc1'
+category_str  = 'category: performance'
+bugzilla_str  = 'bugzilla: https://gitee.com/openeuler/intel-kernel/issues/IBP9QO'
+cve_str       = 'CVE:NA'
+
+########################################################
 # Common definition
-sig_str      = 'Backport Auto-tune per-CPU pageset size.'
-amend_str    = '[ Aubrey Li: amend commit log ]'
-sob_str      = 'Signed-off-by: Aubrey Li <aubrey.li@linux.intel.com>'
+########################################################
+sig_str       = 'Backport Auto-tune per-CPU pageset size.'
+amend_str     = '[ Aubrey Li: amend commit log ]'
+sob_str       = 'Signed-off-by: Aubrey Li <aubrey.li@linux.intel.com>'
 
 def extract_commit_id(patch_text):
     lines = patch_text.split('\n')
@@ -98,6 +120,19 @@ def insert_commit_line(patch_text, community):
 
             case 'baseline':
                 lines.insert(insert_index, f'commit {commit_id} upstream.')
+                lines.insert(insert_index, '')
+
+            case 'euler':
+                lines.insert(insert_index, '--------------------------------')
+                lines.insert(insert_index, '')
+                lines.insert(insert_index, f'Reference: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id={commit_id}')
+                lines.insert(insert_index, '')
+                lines.insert(insert_index, cve_str)
+                lines.insert(insert_index, bugzilla_str)
+                lines.insert(insert_index, category_str)
+                lines.insert(insert_index, f'commit {commit_id}')
+                lines.insert(insert_index, from_str)
+                lines.insert(insert_index, inclusion_str)
                 lines.insert(insert_index, '')
 
             case _:
@@ -166,7 +201,9 @@ def main():
 
     parser = argparse.ArgumentParser(description="Amend patch script")
     
-    parser.add_argument("-c", "--community", required=True, help="Community name (required)")
+    parser.add_argument("-c", "--community", required=True,
+                        choices=['anolis', 'oc', 'euler', 'baseline'],
+                        help="Community name (required)")
 
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("-p", "--patch", help="Specify a patch file")
