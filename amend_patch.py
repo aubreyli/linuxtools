@@ -51,7 +51,7 @@ inclusion_str = 'mainline inclusion'
 from_str      = 'from mainline-v6.7-rc1'
 category_str  = 'category: performance'
 bugzilla_str  = 'bugzilla: https://gitee.com/openeuler/intel-kernel/issues/IBP9QO'
-cve_str       = 'CVE:NA'
+cve_str       = 'CVE: NA'
 
 ########################################################
 # Common definition
