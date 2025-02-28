@@ -113,11 +113,6 @@ def insert_commit_line(patch_text, community):
                 lines.insert(insert_index, anbz_str)
                 lines.insert(insert_index, '')
 
-            case 'oc':
-                lines.insert(insert_index, conflict_str)
-                lines.insert(insert_index, f'[ Upstream commit {commit_id} ]')
-                lines.insert(insert_index, '')
-
             case 'baseline':
                 lines.insert(insert_index, f'commit {commit_id} upstream.')
                 lines.insert(insert_index, '')
@@ -133,6 +128,15 @@ def insert_commit_line(patch_text, community):
                 lines.insert(insert_index, f'commit {commit_id}')
                 lines.insert(insert_index, from_str)
                 lines.insert(insert_index, inclusion_str)
+                lines.insert(insert_index, '')
+
+            case 'oc':
+                lines.insert(insert_index, conflict_str)
+                lines.insert(insert_index, f'[ Upstream commit {commit_id} ]')
+                lines.insert(insert_index, '')
+
+            case 've':
+                lines.insert(insert_index, f'commit {commit_id} upstream.')
                 lines.insert(insert_index, '')
 
             case _:
@@ -202,7 +206,7 @@ def main():
     parser = argparse.ArgumentParser(description="Amend patch script")
     
     parser.add_argument("-c", "--community", required=True,
-                        choices=['anolis', 'oc', 'euler', 'baseline'],
+                        choices=['anolis', 'baseline', 'euler', 'oc', 've'],
                         help="Community name (required)")
 
     group = parser.add_mutually_exclusive_group(required=True)
