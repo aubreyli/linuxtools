@@ -196,3 +196,9 @@ scp -J root@10.238.153.101 root@192.168.135.28:~/file.txt .
 36. GRUB2 enable debug message
 - set debug=all
 - grub-install --debug-image=all
+
+37. # 下载unsloth制作的社区版量化模型(hf-mirror和modelscpoe源都可)
+git clone --no-checkout https://hf-mirror.com/unsloth/DeepSeek-R1-GGUF 
+cd DeepSeek-R1-GGUF/
+# 建议nohup执行, 预计至少需要半天时间, 同时确保磁盘容量足够400G.
+git lfs pull --include="DeepSeek-R1-Q4_K_M/*"
