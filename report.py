@@ -1,15 +1,26 @@
 import requests
 import json
 import csv
+import sys
 import os
 
-# === 配置部分 ===
-# 要查询的多个 issue key（可根据需要修改）
-issues = [
-    "LFE-6954",
-    "LFE-6955",
-    "LFE-9502"
-]
+# === 获取命令行参数 ===
+if len(sys.argv) != 2:
+    print("用法: python report.py <issues_file.txt>")
+    sys.exit(1)
+
+issues_file = sys.argv[1]
+
+# === 从文件读取 issue key 列表 ===
+if not os.path.exists(issues_file):
+    raise FileNotFoundError(f"{issues_file} 不存在！请先创建文本文件，每行一个 issue key。")
+
+with open(issues_file, "r", encoding="utf-8") as f:
+    issues = [line.strip() for line in f if line.strip()]
+
+if not issues:
+    raise ValueError(f"{issues_file} 里面没有有效的 issue key。")
+
 
 # JIRA 基础 URL
 jira_base = "https://jira.devtools.intel.com"
