@@ -39,7 +39,8 @@ headers = {
 }
 
 # 输出 CSV 文件名
-output_csv = "cwf.csv"
+base_name = os.path.splitext(issues_file)[0]   # 去掉扩展名
+output_csv = base_name + ".csv"
 
 # === 开始处理 ===
 data_rows = []
@@ -64,6 +65,7 @@ for issue_key in issues:
     summary = fields.get("summary", "N/A")
     description = fields.get("description", "N/A")
     updated = fields.get("updated", "N/A")
+    commit_ids = fields.get("customfield_13103", [])
 
     # 获取最后一条评论
     comments = fields.get("comment", {}).get("comments", [])
@@ -79,12 +81,12 @@ for issue_key in issues:
     # 构造 JIRA 网页链接
     jira_link = f"{jira_base}/browse/{issue_key}"
 
-    data_rows.append([summary, jira_link, description, last_comment_time, last_comment_text])
+    data_rows.append([summary, jira_link, description, last_comment_time, last_comment_text, commit_ids])
 
 # === 写入 CSV 文件 ===
 with open(output_csv, "w", newline='', encoding="utf-8") as csvfile:
     writer = csv.writer(csvfile)
-    writer.writerow(["Summary", "JIRA Link", "Description", "Last update", "Last comment"])
+    writer.writerow(["Summary", "JIRA Link", "Description", "Last update", "Last comment", "Commit ID"])
     writer.writerows(data_rows)
 
 print(f"\n✅ 已生成 CSV 文件: {output_csv}")
