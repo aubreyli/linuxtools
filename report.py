@@ -64,6 +64,15 @@ for issue_key in issues:
 
     summary = fields.get("summary", "N/A")
     description = fields.get("description", "N/A")
+    fix_versions = fields.get("fixVersions", [])
+    fix_target = [fv.get("name") for fv in fix_versions]
+
+    tech_field = fields.get("customfield_47202", [])
+    if tech_field:
+        tech_complexity = tech_field.get("value", [])
+    else:
+        tech_complexity = "TBD"
+
     updated = fields.get("updated", "N/A")
     commit_ids = fields.get("customfield_13103", [])
 
@@ -81,12 +90,12 @@ for issue_key in issues:
     # 构造 JIRA 网页链接
     jira_link = f"{jira_base}/browse/{issue_key}"
 
-    data_rows.append([summary, jira_link, description, last_comment_time, last_comment_text, commit_ids])
+    data_rows.append([summary, jira_link, description, fix_target, tech_complexity, last_comment_time, last_comment_text, commit_ids])
 
 # === 写入 CSV 文件 ===
 with open(output_csv, "w", newline='', encoding="utf-8") as csvfile:
     writer = csv.writer(csvfile)
-    writer.writerow(["Summary", "JIRA Link", "Description", "Last update", "Last comment", "Commit ID"])
+    writer.writerow(["Summary", "JIRA Link", "Description", "Fix Versions", "Tech Complexity", "Last update", "Last comment", "Commit ID"])
     writer.writerows(data_rows)
 
 print(f"\n✅ 已生成 CSV 文件: {output_csv}")
