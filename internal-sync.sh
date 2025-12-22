@@ -11,5 +11,13 @@ git pull /home/aubrey/anolis/intel-cloud-kernel devel-5.10 >> $LOGFILE 2>&1
 git push >> $LOGFILE 2>&1
 echo "\n" >>  $LOGFILE 2>&1
 
+#sync up intel-kernel devel-6.6 branch with cloud-kernel devel-5.10 branch
+git checkout devel-6.6
+echo "intel-kernel devel-6.6 branch result:" >> $LOGFILE 2>&1
+echo "=========================================" >>  $LOGFILE 2>&1
+git pull /home/aubrey/anolis/intel-cloud-kernel devel-6.6 >> $LOGFILE 2>&1
+git push >> $LOGFILE 2>&1
+echo "\n" >>  $LOGFILE 2>&1
+
 cat $LOGFILE | mutt -s "[Intel-kernel]: $TODAY update" $EMAIL
 rm $LOGFILE
