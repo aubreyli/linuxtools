@@ -37,7 +37,7 @@ import argparse
 ########################################################
 # Anolis Specific definition
 ########################################################
-anbz_str      = 'ANBZ: #16164'
+anbz_str      = 'ANBZ: #26672'
 
 ########################################################
 # OpenCloudOS specific definition
@@ -48,15 +48,15 @@ conflict_str  = 'Conflict: none'
 # OpenEuler specific definition
 ########################################################
 inclusion_str = 'mainline inclusion'
-from_str      = 'from mainline-v6.7-rc1'
-category_str  = 'category: performance'
-bugzilla_str  = 'bugzilla: https://gitee.com/openeuler/intel-kernel/issues/IBP9QO'
+from_str      = 'from mainline-v6.19-rc1'
+category_str  = 'category: bugfix'
+bugzilla_str  = 'bugzilla: https://atomgit.com/openeuler/kernel/issues/8289'
 cve_str       = 'CVE: NA'
 
 ########################################################
 # Common definition
 ########################################################
-sig_str       = 'Backport Auto-tune per-CPU pageset size.'
+sig_str       = 'Backport fix NUMA sched domain build errors for GNR and CWF.'
 amend_str     = '[ Aubrey Li: amend commit log ]'
 sob_str       = 'Signed-off-by: Aubrey Li <aubrey.li@linux.intel.com>'
 
